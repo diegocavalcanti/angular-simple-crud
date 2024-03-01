@@ -1,0 +1,32 @@
+<section class="container">
+  <h2>Lista de Exemplos</h2>
+  <a class="btn btn-primary"  routerLink="/exemplo-form" >Novo</a>
+
+  @if (listaModel.length > 0) {
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(model of listaModel; track model.id){
+      <tr>
+        <td>{{ model.id }}</td>
+        <td>{{ model.nome }}</td>
+        <td>{{ model.descricao }}</td>
+
+        <td>
+          <button class="btn btn-primary m-2" routerLink="/exemplo-form/{{ model.id }}">Editar</button>
+          <button class="btn btn-secondary m-2" (click)="excluir(model.id)">Excluir</button>
+        </td>
+      </tr>
+      } @empty { }
+    </tbody>
+  </table>
+  } @else {
+  <p>Sem Registros...</p>
+  }
+</section>
