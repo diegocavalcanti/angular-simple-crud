@@ -27,8 +27,23 @@ export class ExemploService {
   }
 
   // Adiciona um Exemplo
-  save(Exemplo: Exemplo): void {
-    this.models.push(Exemplo);
+  save(model: Exemplo): void {
+
+
+    //editar
+    if (model.id && model.id > 0) {
+      // Se o modelo tiver um ID, editamos o elemento correspondente na lista
+      const index = this.models.findIndex(item => item.id === model.id);
+      if (index !== -1) {
+        this.models[index] = model;
+      }
+
+   //salvar
+    } else {
+      // Se o modelo não tiver um ID, inserimos um novo elemento na lista
+      model.id = this.models.length +1;
+      this.models.push(model);
+    }
   }
 
   // Retorna um Exemplo pelo ID

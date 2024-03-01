@@ -18,4 +18,9 @@ export const routes: Routes = [
     component: ExemploFormComponent,
   },
 
+  {
+    path: "exemplo-form/:id",
+    component: ExemploFormComponent,
+  },
+
 ];
